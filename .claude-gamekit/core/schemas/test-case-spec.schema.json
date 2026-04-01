@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TestCaseSpec",
+  "type": "object",
+  "required": [
+    "case_id",
+    "feature_id",
+    "preconditions",
+    "steps",
+    "expected",
+    "evidence_required",
+    "automation_level"
+  ],
+  "properties": {
+    "case_id": { "type": "string" },
+    "feature_id": { "type": "string" },
+    "preconditions": { "type": "array", "items": { "type": "string" } },
+    "steps": { "type": "array", "items": { "type": "string" } },
+    "expected": { "type": "array", "items": { "type": "string" } },
+    "evidence_required": { "type": "array", "items": { "type": "string" } },
+    "automation_level": { "type": "string" }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeatureSpec",
+  "type": "object",
+  "required": [
+    "feature_id",
+    "goal",
+    "scope_in",
+    "scope_out",
+    "dependencies",
+    "acceptance_criteria",
+    "asset_needs",
+    "test_notes"
+  ],
+  "properties": {
+    "feature_id": { "type": "string" },
+    "goal": { "type": "string" },
+    "scope_in": { "type": "array", "items": { "type": "string" } },
+    "scope_out": { "type": "array", "items": { "type": "string" } },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "acceptance_criteria": { "type": "array", "items": { "type": "string" } },
+    "asset_needs": { "type": "array", "items": { "type": "string" } },
+    "test_notes": { "type": "array", "items": { "type": "string" } }
+  }
+}

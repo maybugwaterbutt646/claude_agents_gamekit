@@ -1,0 +1,18 @@
+{
+  "work_id": "work-example-clean-template-spec",
+  "task_id": "task-example-clean-template",
+  "agent": "gamekit-feature-analyst",
+  "goal": "Draft the feature slice for the clean template example.",
+  "write_scope": [
+    ".claude-gamekit/project/docs/planning/features/example-clean-template.md"
+  ],
+  "read_scope": [
+    ".claude-gamekit/project/docs/planning/game-brief.md",
+    ".claude-gamekit/project/docs/shared/workflow-rules.md"
+  ],
+  "depends_on": [],
+  "outputs": [
+    ".claude-gamekit/project/docs/planning/features/example-clean-template.md"
+  ],
+  "status": "planned"
+}

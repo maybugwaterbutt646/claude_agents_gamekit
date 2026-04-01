@@ -1,0 +1,21 @@
+{
+  "name": "claude-gamekit-core",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Core scripts and validation for the .claude-gamekit multi-agent 3D game template.",
+  "scripts": {
+    "validate": "node scripts/validate/validate-template.mjs",
+    "test": "node tests/run-tests.mjs",
+    "check": "node scripts/validate/validate-template.mjs && node tests/run-tests.mjs",
+    "task:intake": "node scripts/tasks/intake.mjs",
+    "task:dispatch": "node scripts/tasks/dispatch.mjs",
+    "task:stage": "node scripts/tasks/set-stage.mjs",
+    "task:handoff": "node scripts/tasks/handoff.mjs",
+    "task:close": "node scripts/tasks/close.mjs",
+    "verify": "node scripts/verify/run.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

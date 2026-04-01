@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HandoffRecord",
+  "type": "object",
+  "required": [
+    "task_id",
+    "work_id",
+    "from",
+    "to",
+    "summary",
+    "artifacts",
+    "open_risks",
+    "next_action"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "work_id": { "type": "string", "minLength": 1 },
+    "from": { "type": "string", "minLength": 1 },
+    "to": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "artifacts": { "type": "array", "items": { "type": "string" } },
+    "open_risks": { "type": "array", "items": { "type": "string" } },
+    "next_action": { "type": "string", "minLength": 1 }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EngineCapability",
+  "type": "object",
+  "required": [
+    "engine",
+    "local_run",
+    "headless_run",
+    "build",
+    "static_audit",
+    "ci_required",
+    "manual_checks"
+  ],
+  "properties": {
+    "engine": { "type": "string" },
+    "local_run": { "type": "string", "enum": ["available", "conditional", "unavailable"] },
+    "headless_run": { "type": "string", "enum": ["available", "conditional", "unavailable"] },
+    "build": { "type": "string", "enum": ["available", "conditional", "unavailable"] },
+    "static_audit": { "type": "string", "enum": ["available", "conditional", "unavailable"] },
+    "ci_required": { "type": "array", "items": { "type": "string" } },
+    "manual_checks": { "type": "array", "items": { "type": "string" } }
+  }
+}

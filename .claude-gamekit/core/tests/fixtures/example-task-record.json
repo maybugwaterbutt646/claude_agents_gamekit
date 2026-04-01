@@ -1,0 +1,16 @@
+{
+  "task_id": "task-example-clean-template",
+  "feature_id": "example-clean-template",
+  "engine": "unity",
+  "stage": "intake",
+  "owner": "main-orchestrator",
+  "status": "active",
+  "inputs": [
+    "bootstrap the clean template"
+  ],
+  "expected_outputs": [
+    ".claude-gamekit/project/docs/planning/features/example-clean-template.md",
+    ".claude-gamekit/project/docs/qa/cases/example-clean-template.md",
+    ".claude-gamekit/project/artifacts/verification/task-example-clean-template-unity.json"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "engine": "wechat-minigame",
+  "local_run": "conditional",
+  "headless_run": "unavailable",
+  "build": "conditional",
+  "static_audit": "available",
+  "ci_required": [
+    "adapter_check",
+    "build",
+    "devtools_validation"
+  ],
+  "manual_checks": [
+    "touch_input_review"
+  ]
+}

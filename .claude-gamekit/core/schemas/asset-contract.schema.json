@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AssetContract",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "placeholder_path",
+    "replacement_target",
+    "pivot_rule",
+    "scale_rule",
+    "socket_defs",
+    "material_slots",
+    "collision_rule",
+    "prefab_or_node_shape"
+  ],
+  "properties": {
+    "asset_id": { "type": "string" },
+    "placeholder_path": { "type": "string" },
+    "replacement_target": { "type": "string" },
+    "pivot_rule": { "type": "string" },
+    "scale_rule": { "type": "string" },
+    "socket_defs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "parent", "transform_rule"],
+        "properties": {
+          "name": { "type": "string" },
+          "parent": { "type": "string" },
+          "transform_rule": { "type": "string" }
+        }
+      }
+    },
+    "material_slots": { "type": "array", "items": { "type": "string" } },
+    "collision_rule": { "type": "string" },
+    "prefab_or_node_shape": { "type": "array", "items": { "type": "string" } }
+  }
+}

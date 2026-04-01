@@ -1,0 +1,16 @@
+{
+  "engine": "unity",
+  "local_run": "conditional",
+  "headless_run": "conditional",
+  "build": "conditional",
+  "static_audit": "available",
+  "ci_required": [
+    "compile",
+    "editmode_tests",
+    "player_build"
+  ],
+  "manual_checks": [
+    "scene_playtest",
+    "asset_swap_smoke"
+  ]
+}

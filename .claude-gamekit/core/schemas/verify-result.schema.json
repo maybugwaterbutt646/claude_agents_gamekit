@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VerifyResult",
+  "type": "object",
+  "required": [
+    "task_id",
+    "engine",
+    "result",
+    "checks_run",
+    "blocked_reason",
+    "evidence_paths",
+    "followups"
+  ],
+  "properties": {
+    "task_id": { "type": "string" },
+    "engine": { "type": "string" },
+    "result": { "type": "string" },
+    "checks_run": { "type": "array", "items": { "type": "string" } },
+    "blocked_reason": { "type": "string" },
+    "evidence_paths": { "type": "array", "items": { "type": "string" } },
+    "followups": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "engine": "web",
+  "local_run": "available",
+  "headless_run": "unavailable",
+  "build": "available",
+  "static_audit": "available",
+  "ci_required": [
+    "typecheck",
+    "build",
+    "browser_smoke"
+  ],
+  "manual_checks": [
+    "camera_readability_review"
+  ]
+}
