@@ -23,6 +23,7 @@ If you want Claude Code to help with real game production work instead of isolat
 - [Core Design Ideas](#core-design-ideas)
 - [What Makes This Repository Different](#what-makes-this-repository-different)
 - [Supported Targets](#supported-targets)
+- [Categories](#categories)
 - [Repository Structure](#repository-structure)
 - [Included Agents](#included-agents)
 - [Included Commands](#included-commands)
@@ -183,6 +184,144 @@ The workflow is designed to be portable across:
 - WeChat Mini Game projects
 
 Unity is the first full adapter. The others share the same contracts and workflow shape, but may rely more on scaffolds or capability placeholders until a concrete project is attached.
+
+## Categories
+
+### [01. Orchestration And Workflow](#01-orchestration-and-workflow)
+
+The coordination layer that keeps Claude Code usable in long-running game work.
+
+- [gamekit-main-orchestrator](./.claude/agents/gamekit-main-orchestrator.md) - keeps the main session in charge
+- [CLAUDE.md](./CLAUDE.md) - thin root entrypoint
+- [gamekit-intake](./.claude/commands/gamekit-intake.md) - create and activate a task
+- [gamekit-dispatch](./.claude/commands/gamekit-dispatch.md) - split work into parallel-safe work items
+- [workflow-rules.md](./.claude-gamekit/project/docs/shared/workflow-rules.md) - ownership and evidence rules
+
+### [02. Planning And Task Design](#02-planning-and-task-design)
+
+The planning layer that turns a user goal into bounded, reviewable work.
+
+- [gamekit-feature-analyst](./.claude/agents/gamekit-feature-analyst.md) - turns goals into executable slices
+- [game-brief.md](./.claude-gamekit/project/docs/planning/game-brief.md) - project-level intent
+- [feature specs folder](./.claude-gamekit/project/docs/planning/features/) - per-slice planning docs
+- [task-record schema](./.claude-gamekit/core/schemas/task-record.schema.json) - active task structure
+- [work-item schema](./.claude-gamekit/core/schemas/work-item-record.schema.json) - parallel work structure
+
+### [03. Placeholder Assets And Asset ABI](#03-placeholder-assets-and-asset-abi)
+
+The asset layer that keeps graybox speed and replacement safety from fighting each other.
+
+- [gamekit-placeholder-artist](./.claude/agents/gamekit-placeholder-artist.md) - placeholder composition and naming
+- [gamekit-tech-art-contracts](./.claude/agents/gamekit-tech-art-contracts.md) - replacement-safe asset contracts
+- [asset-catalog.md](./.claude-gamekit/project/docs/art/asset-catalog.md) - project placeholder inventory
+- [replacement-guide.md](./.claude-gamekit/project/docs/art/replacement-guide.md) - swap process for final assets
+- [asset-contract schema](./.claude-gamekit/core/schemas/asset-contract.schema.json) - machine-readable Asset ABI
+
+### [04. Gameplay And Engine Adapters](#04-gameplay-and-engine-adapters)
+
+The implementation layer for host-project code and engine-specific integration.
+
+- [gamekit-gameplay-engineer](./.claude/agents/gamekit-gameplay-engineer.md) - gameplay implementation against approved contracts
+- [gamekit-unity-integrator](./.claude/agents/gamekit-unity-integrator.md) - Unity adapter
+- [gamekit-godot-integrator](./.claude/agents/gamekit-godot-integrator.md) - Godot adapter
+- [gamekit-web-integrator](./.claude/agents/gamekit-web-integrator.md) - Web adapter
+- [gamekit-wechat-integrator](./.claude/agents/gamekit-wechat-integrator.md) - WeChat Mini Game adapter
+- [engine-capabilities.md](./.claude-gamekit/project/docs/engineering/engine-capabilities.md) - capability overview
+
+### [05. QA, Verification, And Script Validation](#05-qa-verification-and-script-validation)
+
+The validation layer that keeps "it should work" from replacing real evidence.
+
+- [gamekit-qa-verifier](./.claude/agents/gamekit-qa-verifier.md) - QA cases and verification evidence
+- [gamekit-script-validator](./.claude/agents/gamekit-script-validator.md) - entrypoint and script reliability
+- [test-strategy.md](./.claude-gamekit/project/docs/qa/test-strategy.md) - validation policy
+- [verify-result schema](./.claude-gamekit/core/schemas/verify-result.schema.json) - structured verification output
+- [script-smoke.mjs](./.claude-gamekit/core/tests/script-smoke.mjs) - isolated smoke coverage
+
+### [06. Release, Documentation, And Adoption](#06-release-documentation-and-adoption)
+
+The publishing layer that makes the template usable by other Git users, not just by its author.
+
+- [gamekit-release-manager](./.claude/agents/gamekit-release-manager.md) - commit and push workflow
+- [gamekit-bilingual-docs](./.claude/agents/gamekit-bilingual-docs.md) - English and Chinese docs
+- [core README](./.claude-gamekit/core/README.md) - deep implementation guide
+- [core README.zh-CN](./.claude-gamekit/core/README.zh-CN.md) - Chinese guide
+- [CONTRIBUTING.md](./CONTRIBUTING.md) - contribution rules
+
+## 01. Orchestration And Workflow
+
+This repository is built around the idea that the main Claude Code session should remain the only true coordinator.
+
+That is why the root workflow is intentionally conservative:
+
+- the main session owns task intake
+- the main session chooses when to delegate
+- subagents do not negotiate directly with each other
+- every stage leaves behind both docs and structured artifacts
+
+This is the part of the design that most directly targets low-context failure. When the main thread stays in charge, the project becomes easier to pause, resume, review, and debug.
+
+## 02. Planning And Task Design
+
+Planning in GameKit is not open-ended ideation. It is controlled reduction.
+
+The point of the planning layer is to take a user goal and produce:
+
+- a bounded feature slice
+- explicit acceptance criteria
+- visible dependencies
+- a task model that later agents can operate on without replaying the whole conversation
+
+That is why `TaskRecord`, `WorkItemRecord`, and `FeatureSpec` all exist. They make coordination restartable.
+
+## 03. Placeholder Assets And Asset ABI
+
+This is one of the defining ideas of the repository.
+
+Temporary assets are not just temporary visuals. In practice they leak into:
+
+- sockets
+- hierarchy assumptions
+- colliders
+- materials
+- runtime references
+
+If those assumptions are not captured explicitly, later human artists inherit brittle gameplay code. The split between placeholder authoring and Asset ABI authoring is there to keep speed and replacement safety from collapsing into each other.
+
+## 04. Gameplay And Engine Adapters
+
+The implementation layer deliberately separates shared workflow from engine-specific friction.
+
+Unity, Godot, Web, and WeChat Mini Game projects all need different setup, tooling, and verification paths. Instead of pretending those differences do not exist, the template isolates them behind engine adapters while keeping the workflow contracts shared.
+
+That is what lets this repository stay multi-engine without becoming a pile of vague agent prompts.
+
+## 05. QA, Verification, And Script Validation
+
+The repository assumes that validation has to be engineered, not merely described.
+
+That is why it includes:
+
+- QA-first workflow rules
+- structured verification artifacts
+- per-engine capability scaffolds
+- script smoke coverage in isolated temporary workspaces
+
+The goal is to make "this entrypoint runs" and "this task has evidence" testable claims, not social expectations.
+
+## 06. Release, Documentation, And Adoption
+
+A reusable template is not complete when the code works locally. It is complete when another Git user can understand what it is, why it is shaped this way, and how to adopt it without reverse-engineering the author's intent.
+
+That is why this repository now includes:
+
+- a homepage README built for GitHub browsing
+- deeper core docs
+- bilingual documentation support
+- a contribution guide
+- a release-focused agent
+
+The result should feel more like a usable open-source starter than a private prompt dump.
 
 ## Repository Structure
 
